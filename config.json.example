@@ -3,6 +3,7 @@
     "port" : 8500,
     "token" : "find this at: http://you.talkerapp.com/settings#api",
     "rooms" : [
-    	{"name":"Main", "id": "9999"}
+    	{"name":"Main", "id": "9999"},
+    	{"name":"Slave", "id": "333"}
     	]
 }
