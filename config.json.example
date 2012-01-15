@@ -2,5 +2,7 @@
     "host" : "you.talkerapp.com",
     "port" : 8500,
     "token" : "find this at: http://you.talkerapp.com/settings#api",
-    "room" : "Room"
+    "rooms" : [
+    	{"name":"Main", "id": "9999"}
+    	]
 }
