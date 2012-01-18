@@ -8,7 +8,7 @@ If you find any bugs please create an issue, or why not contribute with a soluti
 http://nodejs.org/#download
 
 ### Install TalkerTexasRanger  
-https://github.com/I-ARE-RIO/TalkerTexasRanger/zipball/master
+[Download TalkerTexasRanger as a zip file](https://github.com/I-ARE-RIO/TalkerTexasRanger/zipball/master)
 or
 
     git clone git@github.com:I-ARE-RIO/TalkerTexasRanger.git
@@ -71,3 +71,15 @@ There are several events that your plugin can listen too.
     talker.on('connected', function (data) {
         talker.message(data.room, 'Hello world!');
     } 
+    
+### talker.command (command, callback, [rooms])
+Listens for commands prefixed by an command identifier which is specified in config.json.  
+Commands can take any number of arguments separated by [space].
+This example listens for the message !sum n n n... in all rooms.
+
+    talker.command('sum', function(data, args) {
+        var sum = args.reduce(function (a, b) {
+            return a + b;
+        });
+        talker.message(data.room, sum);
+    });
