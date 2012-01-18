@@ -13,7 +13,7 @@
 
 var talker = require('../lib/talker');
 
-var intervalId,
+var timerId,
     hour = 15,
     minute = 0,
     now = new Date(),
@@ -21,15 +21,21 @@ var intervalId,
       ? new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, hour, minute)
       : new Date(now.getFullYear(), now.getMonth(), now.getDate(), hour, minute);
 
-// Setup an interval to broadcast at 15:00 next time.
-// and after that it does so every 24th hour.
-intervalId = setInterval(function () {
-  talker.broadcast('Time for ping pong everyone!');
-  clearInterval(intervalId);
-
-  intervalId = setInterval(function () {
+// Broadcasts that it's time for pingpong if the hour is right
+// and if it's during a week day.
+var pingpong = function () {
+  var now = new Date();
+  if (now.getDay() < 6 && now.getHours() === 15) {
     talker.broadcast('Time for ping pong everyone!');
-  }, 8640000);
+  }
+};
+
+// Call pingpong function next whole hour.
+// And then setup an interval to poll it every whole hour after that.
+timerId = setTimeout(function () {
+  pingpong();
+  clearTimeout(timerId);
+  timerId = setInterval(pingpong, 3600000);
 }, next.getTime() - now.getTime());
 
 talker.command('pingpong', function (data) {
@@ -42,6 +48,6 @@ talker.command('pingpong', function (data) {
   } else if (hours >= 15) {
     talker.message(data.room, 'You\'re late, ping pong should have started ' + (hours - 15) + ' hours and ' + minutes + ' minutes ago.');
   } else if (hours < 15) {
-    talker.message(data.room, (15 - hours) + ' hours and ' + (60 - minutes) + ' minutes left until the daily ping pong');
+    talker.message(data.room, (14 - hours) + ' hours and ' + (60 - minutes) + ' minutes left until the daily ping pong');
   }
 });
