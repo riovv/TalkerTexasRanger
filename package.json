@@ -1,0 +1,19 @@
+{ 
+  "name" : "talkertexasranger",
+  "description" : "A TalkerApp.com bot",
+  "tags" : ["bot", "talkerapp", "talker" , "chuck norris", "irc"],
+  "version" : "0.1.0",
+  "author" : "Patric Nordmark <patric.nordmark@gmail.com>",
+  "repository" : { 
+    "type" : "git",
+    "url" : "http://github.com/I-ARE-RIO/TalkerTexasRanger.git"
+  },
+  "bugs" : { "url" : "http://github.com/I-ARE-RIO/TalkerTexasRanger/issues" },
+  "engines" : ["node >= 0.4.0"],
+  "main" : "./TalkerTexasRanger",
+  "dependencies" : {
+    "nconf" : "0.5.x"
+    "colors" : "0.6.x"
+  },
+  "private" : "true"
+}
