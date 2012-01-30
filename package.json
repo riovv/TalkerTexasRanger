@@ -12,7 +12,7 @@
   "engines" : ["node >= 0.4.0"],
   "main" : "./TalkerTexasRanger",
   "dependencies" : {
-    "nconf" : "0.5.x"
+    "nconf" : "0.5.x",
     "colors" : "0.6.x"
   },
   "private" : "true"
